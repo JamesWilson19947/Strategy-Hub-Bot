@@ -1,0 +1,57 @@
+[
+    {
+        "type": "PLAYING",
+        "content": "Stellaris II",
+        "status": "dnd"
+    },
+    {
+        "type": "PLAYING",
+        "content": "Crusader Kings IV",
+        "status": "dnd"
+    },
+    {
+        "type": "PLAYING",
+        "content": "Victoria II",
+        "status": "dnd"
+    },
+    {
+        "type": "PLAYING",
+        "content": "Europa Univeralis V",
+        "status": "dnd"
+    },
+    {
+        "type": "COMPETING",
+        "content": "Stellaris",
+        "status": "dnd"
+    },
+    {
+        "type": "WATCHING",
+        "content": "Stellaris - Full Original Soundtrack",
+        "status": "Online"
+    },
+    {
+        "type": "LISTENING",
+        "content": "For your commands...",
+        "status": "Online"
+    },
+    {
+        "type": "LISTENING",
+        "content": "For you to say something...",
+        "status": "Online"
+    },
+    {
+        "type": "LISTENING",
+        "content": "To some stragetic music...",
+        "status": "Online"
+    },
+    {
+        "type": "LISTENING",
+        "content": "For Cryptic to say something silly...",
+        "status": "Online"
+    },
+    {
+        "type": "LISTENING",
+        "content": "for the The Contingency.",
+        "status": "Online"
+    } 
+]
