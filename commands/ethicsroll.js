@@ -26,7 +26,7 @@ module.exports = {
             let luck             = randomIntFromInterval(0,20);
             let ethic            = ethicData[randomEthicGroup][randomEthic]
 
-            if(luck == 20){
+            if(loop == 3 && luck == 20){
                 points = 0;
                 ethics.push(`Gestalt Consciousness`);
                 continue;
