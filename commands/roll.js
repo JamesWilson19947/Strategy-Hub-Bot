@@ -7,7 +7,7 @@ module.exports = {
         .setName('roll')
         .setDescription('returns a number from 0-100'),
     async execute(interaction) {
-		const row = new MessageActionRow()
+        const row = new MessageActionRow()
             .addComponents(
                 new MessageButton()
                     .setCustomId('roll6')
@@ -22,7 +22,7 @@ module.exports = {
                     .setLabel('Click to roll! (100 sides)')
                     .setStyle('PRIMARY'),
             ); 
-		await interaction.reply({ content: 'Click a button', components: [row] });
+        await interaction.reply({ content: 'Click a button', components: [row] });
         
     },
 };
