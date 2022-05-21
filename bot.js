@@ -6,6 +6,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 // Load enviroment variables
 require('dotenv').config()
 
+
 // load commands
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');

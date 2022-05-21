@@ -1,8 +1,10 @@
+const DB = require('../database/postgress.js');
+
 module.exports = {
     name: 'ready',
     once: true,
     async execute(client) {
-
+        
         const statusArray = require('../data/richPresence.json');
         async function pickPresence(){
             const option = Math.floor(Math.random() * statusArray.length);
