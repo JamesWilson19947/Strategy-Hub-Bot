@@ -4,9 +4,6 @@ module.exports = {
     async execute(client) {
 
         const statusArray = require('../data/richPresence.json');
-
-        console.log(statusArray);
-
         async function pickPresence(){
             const option = Math.floor(Math.random() * statusArray.length);
 
