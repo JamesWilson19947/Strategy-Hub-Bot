@@ -1,20 +1,8 @@
 {
-    "empireEthics":[
-        [
-            "Authoritarian",
-            "Egalitarian"
-        ],
-        [
-            "Militarist",
-            "Pacifist"
-        ],
-        [
-            "Xenophobe",
-            "Xenophile"
-        ],
-        [
-            "Spiritualist",
-            "Materialist"
-        ]
-    ]
- }
+  "empireEthics": [
+    ["Authoritarian", "Egalitarian"],
+    ["Militarist", "Pacifist"],
+    ["Xenophobe", "Xenophile"],
+    ["Spiritualist", "Materialist"]
+  ]
+}
