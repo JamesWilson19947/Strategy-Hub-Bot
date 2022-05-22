@@ -18,7 +18,7 @@ module.exports = {
             var data = require('../data/eu4/countries.json');
         };
         if (interaction.customId === 'origin') {
-            var data = require('../data/stellaris/origin.json');
+            var data = require('../data/stellaris/origins.json');
         };
 
         selection = interaction.values[0];
