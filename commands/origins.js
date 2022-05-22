@@ -10,11 +10,11 @@ module.exports = {
             .addComponents(
                 new MessageSelectMenu()
                     .setCustomId('origins')
-                    .setPlaceholder('Nothing selected')
+                    .setPlaceholder('Nothing selected...')
                     .addOptions([
                         {
-                            label: 'Balanced origin',
-                            description: 'Roll a balanced origin',
+                            label: 'Balanced Origin',
+                            description: 'Roll a balanced origin.',
                             value: 'balancedOrigins',
                         },
                         {
@@ -24,6 +24,6 @@ module.exports = {
                         }
                     ]),
             );
-        await interaction.reply({ content: 'Select balanced or any origin', components: [row], ephemeral: true });
+        await interaction.reply({ content: 'Select balanced or any origin.', components: [row], ephemeral: true });
     },
 };
