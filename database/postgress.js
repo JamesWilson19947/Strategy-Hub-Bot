@@ -13,16 +13,15 @@ db.connect(err => {
     }
   })
 
-
 db.query(`
     CREATE TABLE IF NOT EXISTS "users" (
         "id" SERIAL,
         "userId" BIGINT NOT NULL,
-        "userTag" VARCHAR(15) NOT NULL,
-        "userScore" INT NOT NULL DEFAULT 0,
+        "userTag" VARCHAR(50) NOT NULL,
+        "userScore" BIGINT NOT NULL DEFAULT 0,
         PRIMARY KEY ("id")
     );
-`)
+`);
 
 module.exports = db;
   
