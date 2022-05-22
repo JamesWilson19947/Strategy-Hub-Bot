@@ -1,8 +1,9 @@
 module.exports = {
     name: 'guildMemberAdd',
-    execute(guildMember) {
-        console.log(guildMember)
-        let role = guildMember.roles.cache.find(r => r.name === 'Knight')
-        guildMember.roles.add(role);
+    execute(member) {
+         var role = member.guild.roles.find("name", "Knight");
+         if (role) {
+          member.addRole("150999163126022144");
+         } 
     }
 };
