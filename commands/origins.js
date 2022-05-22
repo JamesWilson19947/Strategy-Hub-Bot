@@ -9,7 +9,7 @@ module.exports = {
         const row = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
-                    .setCustomId('origin')
+                    .setCustomId('origins')
                     .setPlaceholder('Nothing selected')
                     .addOptions([
                         {
@@ -20,7 +20,7 @@ module.exports = {
                         {
                             label: 'Any Origin',
                             description: 'Roll any origin.',
-                            value: 'origin',
+                            value: 'origins',
                         }
                     ]),
             );
