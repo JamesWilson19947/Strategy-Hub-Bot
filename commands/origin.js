@@ -15,7 +15,7 @@ module.exports = {
                         {
                             label: 'Balanced origin',
                             description: 'Roll a balanced origin',
-                            value: 'balancedOrigin',
+                            value: 'balancedOrigins',
                         },
                         {
                             label: 'Any Origin',
