@@ -1,0 +1,4 @@
+{
+  "welcomeMessage": "`Welcome ${member.user.username} to our community :wave: \nWe wish you a warm welcome to the Strategy Hub. \nTo see currently hosted games. See the #announcements channel. \nHosted games are pinned.\nWe have granted you the **Knight** role. To get a higher role participate in games and be sportsman like.`",
+  "welcomeChannelMessage": "`@here Please give a warm welcome to ${member.user.toString()} who has joined our community!`"
+}
