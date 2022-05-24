@@ -1,6 +1,20 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const wait = require("node:timers/promises").setTimeout;
 const request = require("request");
+const { MessageEmbed } = require("discord.js");
+const { exit, title } = require("node:process");
+const metascraper = require("metascraper")([
+  require("metascraper-author")(),
+  require("metascraper-date")(),
+  require("metascraper-description")(),
+  require("metascraper-image")(),
+  require("metascraper-logo")(),
+  require("metascraper-clearbit")(),
+  require("metascraper-publisher")(),
+  require("metascraper-title")(),
+  require("metascraper-url")(),
+]);
+const { convert } = require("html-to-text");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -10,8 +24,8 @@ module.exports = {
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName("stellaris")
-        .setDescription("Select content from Stellaris")
+        .setName("eos")
+        .setDescription("Select content from Empire of Sins")
         .addStringOption((option) =>
           option
             .setName("search")
@@ -43,6 +57,17 @@ module.exports = {
     )
     .addSubcommand((subcommand) =>
       subcommand
+        .setName("ck2")
+        .setDescription("Select content from Crusader Kings II")
+        .addStringOption((option) =>
+          option
+            .setName("search")
+            .setDescription("What you want to search for?")
+            .setRequired(true)
+        )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
         .setName("ck3")
         .setDescription("Select content from Crusader Kings III")
         .addStringOption((option) =>
@@ -53,40 +78,55 @@ module.exports = {
         )
     ),
   async execute(interaction) {
-    var sanitizer = require("sanitize")();
     selection = interaction.options.getSubcommand();
-    message = interaction.options.getString("search");
+
+    input = interaction.options.getString("search");
+    message = input.replace(/[^\w\s]/gi, "");
 
     request.get(
-      `https://${selection}.paradoxwikis.com/api.php?action=opensearch&search=${message}`,
+      `https://${selection}.paradoxwikis.com/api.php?action=query&format=json&list=search&srsearch=${message}`,
       function (error, response, body) {
         if (!error && response.statusCode == 200) {
           body = JSON.parse(body);
 
-          firstResult = body[1][0];
-
-          if (!firstResult) {
+          try {
+            firstResult = body.query.search[0].title;
+          } catch (e) {
             interaction.reply(`Sorry, I couldn't find anything for that...`);
             return true;
           }
 
-          string = [];
+          const got = require("got");
 
-          link = body[3];
-          item = body[1];
+          const targetUrl =
+            `https://${selection}.paradoxwikis.com/` + firstResult;
+          (async () => {
+            const { body: html, url } = await got(targetUrl);
+            const metadata = await metascraper({ html, url });
 
-          string.push("**I found these Wiki Pages:**\n");
+            const resultsEmbed = new MessageEmbed()
+              .setColor("#0099ff")
+              .setTitle(metadata.publisher)
+              .setDescription(`Search: ${message}`)
+              .setThumbnail(metadata.image);
 
-          let i = -1;
-          item.forEach((element) => {
-            i++;
-            console.log(element);
-            string.push("[" + element + "]");
-            string.push("(" + link[i] + ") \n");
-          });
+            body.query.search.forEach((element) => {
+              URLtitle = element.title.replace(/\s+/g, "%20");
 
-          string = string.join("");
-          interaction.reply(`${string}`);
+              const snippet = convert(element.snippet, {
+                wordwrap: 130,
+              });
+
+              newSnippet = snippet.replace(`${message}`, `**${message}**`);
+
+              resultsEmbed.addField(
+                `${element.title}`,
+                `${newSnippet} \n [Link to ${element.title}](https://${selection}.paradoxwikis.com/${URLtitle})`,
+                true
+              );
+            });
+            interaction.reply({ embeds: [resultsEmbed] });
+          })();
         } else {
           console.log(error);
           interaction.reply("Opps, something went wrong.");
