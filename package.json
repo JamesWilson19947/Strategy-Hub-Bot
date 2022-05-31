@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "discord-api-types": "^0.33.0",
     "discord.js": "^13.7.0",
     "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "html-to-text": "^8.2.0",
     "metascraper": "^5.29.6",
     "metascraper-author": "^5.29.6",
@@ -25,8 +26,10 @@
     "metascraper-publisher": "^5.29.6",
     "metascraper-title": "^5.29.6",
     "metascraper-url": "^5.29.6",
+    "mocha": "^10.0.0",
     "mongoose": "^6.3.4",
     "pg": "^8.7.3",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "supertest": "^6.2.3"
   }
 }

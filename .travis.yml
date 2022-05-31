@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - 12
+script: 
+  - echo '********* STARTING BUILD *********'
+  - echo 'Installing Dependicies'
+  - npm install 
+  - echo 'Running tests'
+  - mocha
