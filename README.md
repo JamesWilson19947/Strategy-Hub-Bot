@@ -1,4 +1,5 @@
 ## Stratgety Bot
+![](https://app.travis-ci.com/JamesWilson19947/Strategy-Hub-Bot.svg?branch=main)
 
 Coded in NodeJS.
 
