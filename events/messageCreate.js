@@ -8,7 +8,9 @@ module.exports = {
     console.log(
       `[${message.createdAt}][${message.guild.name}] ${message.author.tag} in #${message.channel.name}: ${message.content}`
     );
-    addUserIfNotExists.init(message.author.id, message.author.tag);
-    addUserPoints.init(message.author.id, 1);
+    // Cryptic asked me to disable this for now.
+    
+    // addUserIfNotExists.init(message.author.id, message.author.tag);
+    // addUserPoints.init(message.author.id, 1);
   },
 };
