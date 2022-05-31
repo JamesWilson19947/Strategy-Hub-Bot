@@ -1,9 +1,9 @@
 const supertest = require("supertest");
-const fs = require("node:fs");
-const path = require("node:path");
+const fs = require("fs");
+const path = require("path");
 const { Client, Collection, Intents } = require("discord.js");
-const { default: nodeCluster } = require("node:cluster");
-const { exit } = require("node:process");
+const { default: nodeCluster } = require("cluster");
+const { exit } = require("process");
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES", "GUILD_MEMBERS"],
 });
