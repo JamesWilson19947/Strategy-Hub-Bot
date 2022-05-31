@@ -1,5 +1,4 @@
 module.exports = {
-  name: "interactionCreate",
   execute(interaction) {
     if (!interaction.isSelectMenu()) return;
 
@@ -25,11 +24,19 @@ module.exports = {
     selection = interaction.values[0];
     data = data[selection];
     try {
-      const randomData = data[Math.floor(Math.random() * data.length)];
-      interaction.reply(
-        `${interaction.user.toString()} I give you: ${randomData}, ${randomResponse}`
-      );
-    } catch (error) {
+      if (interaction.customId === "origins") {
+        const randomData = data[Math.floor(Math.random() * data.length)];
+        interaction.reply(
+          `${interaction.user.toString()} I give you: ${randomData}`
+        );
+      }
+      else {
+        interaction.reply(
+          `${interaction.user.toString()} I give you: ${randomData}, ${randomResponse}`
+        );
+      }
+    }
+    catch (error) {
       console.error(error);
       interaction.reply({
         content: "There was an error while executing this command!",

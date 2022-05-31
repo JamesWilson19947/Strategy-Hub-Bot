@@ -26,7 +26,12 @@ module.exports = {
     await interaction.reply({
       content: "Select balanced or any origin.",
       components: [row],
+<<<<<<< HEAD
       ephemeral: true,
+=======
+      // Users should see if roll is legit
+      ephemeral: false,
+>>>>>>> efbe2b6f66e2e373808fb41189031d82ca3b1906
     });
   },
 };
