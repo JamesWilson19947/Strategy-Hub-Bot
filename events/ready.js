@@ -1,4 +1,3 @@
-const DB = require("../database/postgress.js");
 
 module.exports = {
   name: "ready",
