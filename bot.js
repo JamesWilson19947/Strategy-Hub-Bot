@@ -2,7 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, Intents } = require("discord.js");
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES", "GUILD_MEMBERS"],
+  intents: [Intents.FLAGS.GUILDS, "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_VOICE_STATES"],
 });
 
 // Load enviroment variables
