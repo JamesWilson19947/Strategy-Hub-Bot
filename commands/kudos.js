@@ -88,8 +88,6 @@ module.exports = {
 
             }
 
-
-
             try {
                 jsonfile.writeFileSync(filepath, data);
                 return interaction.reply(`Added ${points} karma points to ${count} members in ${channel.name}.`);
@@ -118,10 +116,24 @@ module.exports = {
                 .sort(([, a], [, b]) => b.karma - a.karma)
                 .slice(0, 10);
 
-            const lines = users.map(([userID, { karma }], index) => {
-                const username = interaction.guild.members.cache.get(userID)?.user.username ?? "Unknown User";
-                return `${index + 1}. ${username}: ${karma}`;
-            });
+                const GOLD_MEDAL = '🥇';
+                const SILVER_MEDAL = '🥈';
+                const BRONZE_MEDAL = '🥉';
+                const usernameRegex = /\W/g; // matches any non-word character
+                const replaceChar = '_'; // character to replace non-word characters with
+                
+                const lines = users.map(([userID, { karma, username }], index) => {
+                    let medal = '';
+                    if (index === 0) {
+                        medal = GOLD_MEDAL;
+                    } else if (index === 1) {
+                        medal = SILVER_MEDAL;
+                    } else if (index === 2) {
+                        medal = BRONZE_MEDAL;
+                    }
+                    const sanitizedUsername = username.replace(usernameRegex, replaceChar);
+                    return `${medal} ${index + 1}. ${sanitizedUsername}: ${karma}`;
+                });
 
             const response = lines.length > 0
                 ? "The top 10 users by karma are:\n" + lines.join("\n")
